@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../../component/MovieCard/MovieCard";
+import MovieDetailsModal from "../../component/MovieDetailsModal/MovieDetailsModal";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -40,6 +42,7 @@ const Movies = () => {
     if (!value.trim()) {
       try {
         setLoading(true);
+        setError("");
 
         const response = await fetch("https://api.tvmaze.com/shows");
         const data = await response.json();
@@ -96,7 +99,6 @@ const Movies = () => {
           </p>
         </div>
 
-        {/* Search Bar */}
         <div className="mx-auto mb-10 max-w-2xl">
           <div className="relative">
             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xl">
@@ -151,11 +153,19 @@ const Movies = () => {
               <MovieCard
                 key={movie.id}
                 movie={movie}
+                onDetails={setSelectedMovie}
               />
             ))}
           </div>
         )}
       </div>
+
+      {selectedMovie && (
+        <MovieDetailsModal
+          movie={selectedMovie}
+          onClose={() => setSelectedMovie(null)}
+        />
+      )}
     </section>
   );
 };

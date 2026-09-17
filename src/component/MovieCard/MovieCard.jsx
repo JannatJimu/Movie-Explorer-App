@@ -1,6 +1,6 @@
 import React from "react";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, onDetails }) => {
   const poster =
     movie.image?.medium ||
     "https://via.placeholder.com/300x450?text=No+Image";
@@ -27,7 +27,6 @@ const MovieCard = ({ movie }) => {
       </div>
 
       <div className="p-5">
-
         <h2 className="truncate text-xl font-bold text-white">
           {movie.name}
         </h2>
@@ -44,7 +43,8 @@ const MovieCard = ({ movie }) => {
 
         <button
           type="button"
-          className="mt-5 w-full rounded-lg bg-red-600 px-4 py-3 font-semibold transition hover:bg-red-700"
+          onClick={() => onDetails(movie)}
+          className="mt-5 w-full rounded-lg bg-red-600 px-4 py-3 font-semibold text-white transition hover:bg-red-700"
         >
           See Details
         </button>
