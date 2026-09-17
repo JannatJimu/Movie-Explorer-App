@@ -3,7 +3,12 @@
 MovieExplorer is a responsive React-based movie and TV show discovery application. Users can browse shows, search for specific titles, and view detailed information through an interactive modal.
 
 ## 🔗 Live Demo
-Live Demo: cozy-sable-7f90db.netlify.app
+
+<p>
+  <a href="https://cozy-sable-7f90db.netlify.app" target="_blank">
+    <strong>🚀 View Live Project</strong>
+  </a>
+</p>
 
 ---
 
